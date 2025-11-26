@@ -1,0 +1,78 @@
+# Amourbay Webshop
+
+**Amourbay** is een Nederlandse webshop gespecialiseerd in romantische cadeaus en sensuele boxen voor koppels. Deze website biedt een overzicht van alle producten, inclusief luxe loveboxen, zelf samen te stellen cadeauboxen en accessoires voor intieme momenten.
+
+---
+
+## 📂 Projectstructuur
+
+amourbay/
+│
+├─ index.html # Homepagina met overzicht van populaire producten
+├─ createyourbox.html # Productpagina voor Create Your Box
+├─ createyourboxluxe.html # Productpagina voor Create Your Box Luxe
+├─ lovebox_classicedition.html # Productpagina Dutch Love Box Classic
+├─ lovebox_diamondedition.html # Productpagina Dutch Love Box Diamond
+├─ lovebox_premiumedition.html # Productpagina Dutch Love Box Premium
+├─ glijmiddel.html # Productpagina Sensueel Glijmiddel
+├─ durexorgasmeintensecondooms.html # Productpagina Durex Orgasme Intense Condooms
+├─ loverscent.html # Productpagina Lover’s Scent
+├─ whisperflamecandle.html # Productpagina Whisper Flame Candle
+├─ winkelwagen.html # Winkelwagenpagina
+├─ styles.css # Globale stijlen
+├─ script.js # JavaScript functies (winkelwagen, interacties)
+└─ afbeeldingen/ # Alle productafbeeldingen en media
+
+
+---
+
+## 🛍️ Producten
+
+De webshop bevat de volgende categorieën en producten:
+
+### 💝 Loveboxen
+- **Dutch Love Box Classic** – €54,95  
+- **Dutch Love Box Diamond** – €74,95  
+- **Dutch Love Box Premium** – €79,95  
+
+### 🎁 Zelf samen te stellen boxen
+- **Create Your Box** – vanaf €39,95  
+- **Create Your Box Luxe** – vanaf €69,95  
+
+### ✨ Accessoires
+- **Sensueel Glijmiddel** – €8,95  
+- **Durex Orgasme Intense Condooms** – €4,95  
+- **Lover’s Scent (kaars)** – €4,95  
+- **Whisper Flame Candle** – €3,95  
+
+---
+
+## 🔧 Functionaliteiten
+
+- **Winkelwagen**: Voeg producten toe via de `addToCart()`-functie in `script.js`.
+- **Productpagina’s**: Iedere productpagina bevat gestructureerde data (Schema.org) voor betere SEO.
+- **Responsief design**: De website past zich aan voor desktop, tablet en mobiel.
+- **SEO & Social media**: Open Graph en Twitter Cards zijn geïntegreerd voor betere zichtbaarheid op social media.
+
+---
+
+## 📦 Technische details
+
+- HTML5 met semantische elementen  
+- CSS voor lay-out en styling (`styles.css`)  
+- JavaScript voor dynamische functies (`script.js`)  
+- Structured Data (JSON-LD) voor producten  
+- Alle productafbeeldingen in de `afbeeldingen/` map  
+
+---
+
+## 📄 Toekomstige verbeteringen
+
+- Integratie van een betaalsysteem  
+- Filters en categorieën op de homepage  
+- Uitbreiding van productassortiment  
+- Meertalige ondersteuning  
+
+---
+
+**© 2025 Amourbay – Romantische cadeaus en sensuele producten voor koppels**
