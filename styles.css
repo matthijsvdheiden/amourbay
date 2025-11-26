@@ -3,177 +3,122 @@ body {
   font-family: 'Segoe UI', Calibri, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f8fdf8;
-  color: #333;
+  background-color: #F9F5F2;
+  color: #2C2C2C;
 }
 
 header, footer {
-  background-color: #f1f8e9;
+  background-color: #FFFFFF;
   text-align: center;
   padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 nav a {
-  color: #27ae60;
+  color: #C0392B;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 12px;
+  font-weight: 500;
 }
-nav a:hover { text-decoration: underline; }
+nav a:hover { 
+  text-decoration: underline; 
+}
 
 /* Productoverzicht */
-.product-grid {
+.product-grid, .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 24px;
   max-width: 1000px;
   margin: 2rem auto;
   padding: 0 1rem;
+  justify-items: center;
 }
 
-.product {
-  background-color: #fff;
+.product, .card {
+  background-color: #FFFFFF;
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 260px;
 }
-.product:hover { transform: translateY(-4px); }
 
-.product img {
+.product:hover, .card:hover { 
+  transform: translateY(-6px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product img, .card img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 12px;
 }
 
 .price {
-  color: #27ae60;
+  color: #C0392B;
   font-weight: bold;
   font-size: 1.1em;
 }
 
-button {
-  background-color: #27ae60;
-  color: white;
+button, .btn {
+  background-color: #C0392B;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 12px 22px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 15px;
-  margin-top: 8px;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
-button:hover { background-color: #219150; }
+button:hover, .btn:hover { 
+  background-color: #E74C3C; 
+}
 
 .details-link {
   display: inline-block;
-  margin-top: 6px;
-  color: #2c3e50;
+  margin-top: 8px;
+  color: #2C2C2C;
   font-size: 0.9em;
 }
 
-/* Productpagina’s */
+/* Productpagina */
 .product-page {
-  max-width: 700px;
+  max-width: 720px;
   margin: 2rem auto;
-  background: #fff;
-  padding: 20px;
+  background: #FFFFFF;
+  padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .product-page img {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
 .product-info {
   text-align: left;
+  line-height: 1.6;
 }
 
-
-
-
-
-
-
-.header-flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.left-brand {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.brand {
-  margin: 0 auto;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-align: center;
-}
-
-.main-nav {
-  display: flex;
-  gap: 1em;
-}
-
-
-
-
-
-
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* kleinere min-breedte */
-  gap: 20px;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  justify-items: center; /* centreert kaarten */
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s ease;
-  max-width: 250px; /* voorkomt te brede kaarten */
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  max-height: 200px; /* voorkomt dat afbeeldingen te groot worden */
-  object-fit: contain; /* behoudt verhoudingen */
-}
-
-
-
-
-
-
-
-
-
-
-
-
+/* Responsive */
 @media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr; /* één kaart per rij */
+  .gallery, .product-grid {
+    grid-template-columns: 1fr;
   }
-
-  .card {
-    max-width: 100%; /* kaart vult schermbreedte */
+  .product, .card {
+    max-width: 100%;
   }
-
-  .card img {
-    max-height: 180px; /* iets kleiner op mobiel */
+  .product-page {
+    padding: 16px;
   }
 }
+
+
