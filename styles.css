@@ -1,10 +1,13 @@
-/* Algemene opmaak */
+/* --------------------------------------------------
+   ALGEMENE OPMAAK
+-------------------------------------------------- */
 body {
   font-family: 'Segoe UI', Calibri, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #F9F5F2;
   color: #2C2C2C;
+  line-height: 1.6;
 }
 
 header, footer {
@@ -14,20 +17,47 @@ header, footer {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header .container,
+.footer-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #C0392B;
+}
+
+/* --------------------------------------------------
+   NAVIGATIE
+-------------------------------------------------- */
 nav a {
   color: #C0392B;
   text-decoration: none;
   margin: 0 12px;
   font-weight: 500;
 }
-nav a:hover { 
-  text-decoration: underline; 
+
+nav a:hover {
+  text-decoration: underline;
 }
 
-/* Productoverzicht */
-.product-grid, .gallery {
+/* --------------------------------------------------
+   PRODUCTOVERZICHT (INDEX + REVIEWS)
+-------------------------------------------------- */
+.product-grid,
+.gallery,
+.product-overview {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
   max-width: 1000px;
   margin: 2rem auto;
@@ -35,7 +65,9 @@ nav a:hover {
   justify-items: center;
 }
 
-.product, .card {
+.product-card,
+.product,
+.card {
   background-color: #FFFFFF;
   border-radius: 12px;
   padding: 20px;
@@ -45,16 +77,21 @@ nav a:hover {
   max-width: 260px;
 }
 
-.product:hover, .card:hover { 
-  transform: translateY(-6px); 
+.product-card:hover,
+.product:hover,
+.card:hover {
+  transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.product img, .card img {
+/* Productafbeeldingen */
+.product-card img,
+.product img,
+.card img {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  max-height: 220px;
+  max-height: 180px;
   object-fit: contain;
   margin-bottom: 12px;
 }
@@ -65,7 +102,11 @@ nav a:hover {
   font-size: 1.1em;
 }
 
-button, .btn {
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+button,
+.btn {
   background-color: #C0392B;
   color: #fff;
   border: none;
@@ -76,8 +117,10 @@ button, .btn {
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
-button:hover, .btn:hover { 
-  background-color: #E74C3C; 
+
+button:hover,
+.btn:hover {
+  background-color: #E74C3C;
 }
 
 .details-link {
@@ -87,7 +130,9 @@ button:hover, .btn:hover {
   font-size: 0.9em;
 }
 
-/* Productpagina */
+/* --------------------------------------------------
+   PRODUCTPAGINA
+-------------------------------------------------- */
 .product-page {
   max-width: 720px;
   margin: 2rem auto;
@@ -105,20 +150,152 @@ button:hover, .btn:hover {
 
 .product-info {
   text-align: left;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .gallery, .product-grid {
-    grid-template-columns: 1fr;
-  }
-  .product, .card {
-    max-width: 100%;
-  }
-  .product-page {
-    padding: 16px;
+/* --------------------------------------------------
+   REVIEWS PAGINA TITELS
+-------------------------------------------------- */
+.page-title {
+  text-align: center;
+  color: #C0392B;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.intro-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  color: #555;
+}
+
+/* --------------------------------------------------
+   REVIEW-BLOKKEN (centrale reviewpagina + per product)
+-------------------------------------------------- */
+
+/* Grid met alle review-kaarten */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 26px;
+  padding: 0 1rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+/* Kaart voor elk productreview */
+.review-card {
+  background: #FFF;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: 0.25s;
+  text-align: center;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.10);
+}
+
+.review-card img {
+  width: 100%;
+  max-height: 180px;
+  border-radius: 10px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.review-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #2C2C2C;
+}
+
+/* Sterrenscore */
+.stars {
+  color: #E1A900;
+  font-size: 1.2em;
+  margin: 6px 0 12px 0;
+}
+
+/* Link naar volledige review */
+.review-link {
+  font-size: 0.95em;
+  color: #C0392B;
+  text-decoration: none;
+}
+
+.review-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   INDIVIDUELE REVIEWPAGINA'S
+-------------------------------------------------- */
+
+.single-review {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  background: #fff;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.single-review h2 {
+  color: #C0392B;
+  margin-top: 0;
+}
+
+.single-review .stars {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #C0392B;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+@media (max-width: 700px) {
+  .site-header .container {
+    flex-direction: column;
+    gap: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  .product-grid,
+  .gallery,
+  .product-overview,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card,
+  .product,
+  .card {
+    max-width: 100%;
+  }
+
+  .product-page,
+  .single-review {
+    padding: 18px;
+  }
+}
+
+
 
 
