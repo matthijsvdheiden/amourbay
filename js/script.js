@@ -1,12 +1,16 @@
-// script.js — Universele en foutvrije versie
+// script.js — Opgeschoonde en stabiele versie
 
-let username = localStorage.getItem('lastUser') || prompt("Wat is je naam?");
-if (!username) username = 'gast';
-localStorage.setItem('lastUser', username);
+// ===== Gebruiker =====
+let username = localStorage.getItem('lastUser');
+if (!username) {
+  username = 'gast';
+  localStorage.setItem('lastUser', username);
+}
 
+// ===== Winkelwagen =====
 let cart = JSON.parse(localStorage.getItem(`cart_${username}`)) || [];
 
-// Affiliate links (voeg hier later meer toe)
+// ===== Affiliate links =====
 const affiliateLinks = {
   "Vibrator": "https://partner.example.com/vibrator",
   "Dildo": "https://partner.example.com/dildo",
@@ -16,18 +20,23 @@ const affiliateLinks = {
   "Vibrerende Eitjes": "https://partner.example.com/vibrerende-eitjes",
   "Cockringen": "https://partner.example.com/cockringen",
   "Masturbators": "https://partner.example.com/masturbators",
+
   "Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/dutch-love-box-classic-edition?ref=MATTHIJSVANDERHEIDEN",
   "Dutch Love Box Premium Edition": "https://dutchlovebox.nl/products/dutch-love-box-premium-edition?ref=MATTHIJSVANDERHEIDEN",
   "Dutch Love Box Diamond Edition": "https://dutchlovebox.nl/products/dutch-love-box-diamond-edition?ref=MATTHIJSVANDERHEIDEN",
-  "Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/create-your-own-box-nachtwacht-edition?ref=MATTHIJSVANDERHEIDEN",
-  "Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/glijmiddel?ref=MATTHIJSVANDERHEIDEN",
-   "Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/durex-orgasm-intense-condooms?ref=MATTHIJSVANDERHEIDEN",
-"Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/whisper-flame-candle?ref=MATTHIJSVANDERHEIDEN",
-"Dutch Love Box Classic Edition": "https://dutchlovebox.nl/products/lovers-light?ref=MATTHIJSVANDERHEIDEN"
-
+  "Create Your Own Box": "https://dutchlovebox.nl/products/create-your-own-box-nachtwacht-edition?ref=MATTHIJSVANDERHEIDEN",
+  "Glijmiddel op waterbasis 50 ml": "https://dutchlovebox.nl/products/glijmiddel?ref=MATTHIJSVANDERHEIDEN",
+  "Durex Orgasm Intense Condooms": "https://dutchlovebox.nl/products/durex-orgasm-intense-condooms?ref=MATTHIJSVANDERHEIDEN",
+  "Whisper Flame Candle": "https://dutchlovebox.nl/products/whisper-flame-candle?ref=MATTHIJSVANDERHEIDEN",
+  "Lovers Light": "https://dutchlovebox.nl/products/lovers-light?ref=MATTHIJSVANDERHEIDEN"
 };
 
-// Voeg item toe aan winkelwagen
+// ===== Helpers =====
+function saveCart() {
+  localStorage.setItem(`cart_${username}`, JSON.stringify(cart));
+}
+
+// ===== Voeg toe aan winkelwagen =====
 function addToCart(name, price) {
   cart.push({ name, price });
   saveCart();
@@ -35,7 +44,7 @@ function addToCart(name, price) {
   showCart();
 }
 
-// Toon winkelwagen (werkt met beide layouts)
+// ===== Toon winkelwagen =====
 function showCart() {
   const cartDiv = document.getElementById('cart');
   const list = document.getElementById('cart-items');
@@ -47,7 +56,6 @@ function showCart() {
 
   let total = 0;
 
-  // Leegmaken oude inhoud
   if (cartDiv) cartDiv.innerHTML = '';
   if (list) list.innerHTML = '';
 
@@ -62,7 +70,6 @@ function showCart() {
   if (emptyMessage) emptyMessage.style.display = 'none';
   if (checkoutButton) checkoutButton.style.display = 'inline-block';
 
-  // Items tonen
   cart.forEach((item, index) => {
     total += item.price;
 
@@ -70,37 +77,44 @@ function showCart() {
     line.className = 'cart-item';
     line.innerHTML = `
       ${item.name} – €${item.price.toFixed(2)} 
-      <button onclick="removeItem(${index})" class="remove-btn">Verwijderen</button>
+      <button class="remove-btn" data-index="${index}">Verwijderen</button>
     `;
 
     if (cartDiv) cartDiv.appendChild(line);
 
-    // Ondersteuning voor UL-layout (winkelwagen met <li>)
     if (list) {
       const li = document.createElement('li');
-      li.innerHTML = `${item.name} – €${item.price.toFixed(2)} <button class="remove-btn" onclick="removeItem(${index})">Verwijder</button>`;
+      li.innerHTML = `${item.name} – €${item.price.toFixed(2)} <button class="remove-btn" data-index="${index}">Verwijder</button>`;
       list.appendChild(li);
     }
   });
 
   if (totalPriceElem) totalPriceElem.textContent = `Totaal: €${total.toFixed(2)}`;
+
+  // Verwijder-knoppen activeren
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const index = parseInt(this.getAttribute('data-index'), 10);
+      removeItem(index);
+    });
+  });
 }
 
-// Verwijder item
+// ===== Verwijder item =====
 function removeItem(index) {
   cart.splice(index, 1);
   saveCart();
   showCart();
 }
 
-// Winkelwagen leegmaken
+// ===== Leeg winkelwagen =====
 function clearCart() {
   cart = [];
   saveCart();
   showCart();
 }
 
-// Afrekenen
+// ===== Afrekenen =====
 function checkout() {
   if (cart.length === 0) {
     alert("Je winkelwagen is leeg!");
@@ -120,13 +134,9 @@ function checkout() {
   clearCart();
 }
 
-// Opslaan
-function saveCart() {
-  localStorage.setItem(`cart_${username}`, JSON.stringify(cart));
-}
-
-// Winkelwagen tonen bij laden
-document.addEventListener('DOMContentLoaded', showCart);
-
+// ===== Init =====
+document.addEventListener('DOMContentLoaded', function () {
+  showCart();
+});
 
 
