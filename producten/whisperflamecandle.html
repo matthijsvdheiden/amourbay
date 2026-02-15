@@ -62,9 +62,8 @@
       </ul>
 
       <div class="card-actions">
-        <button onclick="addToCart('Whisper Flame Candle', 3.95)">Toevoegen aan winkelwagen</button>
-        <a class="btn" href="../index.html">Terug naar overzicht</a>
-      </div>
+       <a class="btn" href="bestellen.html">Bestellen</a><p>
+        <a class="btn" href="../index.html">Terug naar overzicht</a></div>
 
     </div>
   </article>
@@ -89,5 +88,11 @@
 </footer>
 
 <script src="../js/script.js"></script>
+
+<script>
+  document.getElementById('addToCartBtn').addEventListener('click', function () {
+    addToCart("Whisper Flame Candle", 3.95);
+  });
+</script>
 </body>
 </html>

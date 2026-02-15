@@ -59,10 +59,9 @@
         <li>✔️ Exclusief verkrijgbaar bij Amourbay</li>
       </ul>
 
-      <div class="card-actions">
-       <button id="addToCartBtn">Toevoegen aan winkelwagen</button>
-        <a class="btn" href="../index.html">Terug naar overzicht</a>
-      </div>
+     <div class="card-actions">
+       <a class="btn" href="bestellen.html">Bestellen</a><p>
+        <a class="btn" href="../index.html">Terug naar overzicht</a></div>
 
     </div>
   </article>
@@ -89,6 +88,12 @@
 </footer>
 
 <script src="../js/script.js"></script>
+
+<script>
+  document.getElementById('addToCartBtn').addEventListener('click', function () {
+    addToCart("Love Box Premium Edition", 79.95);
+  });
+</script>
 
 </body>
 </html>
